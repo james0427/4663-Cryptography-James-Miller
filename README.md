@@ -1,3 +1,6 @@
+Image:
 ![alt tag](http://jamesalmiller.com/Miller.jpg)
 
-Jamesalbert2009@sbcglobal.net
+Email: Jamesalbert2009@sbcglobal.net
+
+Website: Jamesalmiller.com (Currently building)
