@@ -85,51 +85,28 @@ def generateSquare(key):
             
     return playFair
 
-def sameRow(digraph,playFair):
-    """
-    Returns true if digraph is on same row
-    @param   list -- the digraph e.g. [X,C]
-    @returns digraph -- new digraph shifted to the right
-    """
-    
-    for row in playFair:
-        newDigraph = ['','']
-        if digraph[0] in row and digraph[1] in row:
-            newDigraph[0] = row[((row.index(digraph[0])+1)%5)]
-            newDigraph[1] = row[((row.index(digraph[1])+1)%5)]
-            return newDigraph
-    
-    return []
-
-    
-def getCodedDigraph(digraph,square):
-    """
-    Turns a given digraph into its encoded digraph 
-    @param   list -- digraph
-    @returns list -- encoded digraph
-    """
-    newDigraph = ['','']
-
-    #Check to see if digraph is in same row
-    for row in square:
-        if digraph[0] in row and digraph[1] in row:
-            newDigraph[0] = row[((row.index(digraph[0])+1)%5)]
-            newDigraph[1] = row[((row.index(digraph[1])+1)%5)]
-            return newDigraph
-
-    return []
 def countCheck(s):
+    """
+    Determins if the message is an od length and if it is adds an X at the end
+    @param   s  --  String s
+    @returns s -- After X has or hasent been added
+    """
         if len(s) % 2 != 0:
             s = s + 'X'
         return s
 
 def encrypt(playFair,message):
+    """
+    Encrypts a message by using the matrix and original message already
+    @param   string   -- The plaifair matrix and the unencrypted message
+    @returns encrypt -- The message after it's been encrypted
+    """
     letters = set('ABCDEFGHIJKLMNOPQRSTUVWXYZ')
-    message = ''.join(filter(letters.__contains__, message))
-    message = message.replace("J", "I");
+    message = ''.join(filter(letters.__contains__, message)) #Joins the letters and message not allowing dupicates
+    message = message.replace("J", "I"); #Finds the string value of J and changes to an I
     number = 0
     encrypt = []
-    q = 0
+    q = 0 #used as a counter to find the end of the message
     while (q < len(message)-1):
         row = rowRetr(playFair,message[q])
         col = colRetr(playFair,message[q])
@@ -146,10 +123,15 @@ def encrypt(playFair,message):
             encrypt.append(playFair[row][col2])
             encrypt.append(playFair[row2][col])
 
-        q = q + 2
+        q = q + 2 # incraments by to so row and row2 are always being passed in
     return encrypt
 
 def Decrypt(playFair,message):
+    """
+    Decrypt a message that has been encrypted already
+    @param   string   -- The plaifair matrix and the encrpyted message
+    @returns decript-- The message unencrypted
+    """
     decrypt =[]
 
     q = 0
@@ -173,13 +155,24 @@ def Decrypt(playFair,message):
     return decrypt
 
 def rowRetr(playFair,message):
+    """
+    Retrieves the row for the character in message and returns
+    @param   string   -- The matrix and the message[character]
+    @returns message[row] -- The row index number
+    """
     row = 0
     for i in range(5):
         for j in range(5):
             if message == playFair[i][j]:
                 row = i
     return row
+    
 def colRetr(playFair,message):
+     """
+    Retrieves the col for the character in message and returns
+    @param   string   -- The matrix and the message[character]
+    @returns  message[row] -- The col index number
+    """
     col = 0
     for i in range(5):
         for j in range(5):
@@ -189,6 +182,7 @@ def colRetr(playFair,message):
 
 
 ###########################################################################
+#Initial option 
 print("###############################################")
 print("# Name: James Miller")
 print("# Class: CMPS 4663 Cryptography")
@@ -196,7 +190,9 @@ print("# Date: 14 July 2015")
 print("# Program 1 - Playfair Cipher")
 print("###############################################")
 print(" ")
+
 selection = 0
+
 while selection != 3:
     print("Playfair Encryption Tool (P.E.T)")
     print("Written By: James Miller")
@@ -206,6 +202,8 @@ while selection != 3:
     print("3. Quit")
     selection = input("=>")
     print("********************************************************")
+
+    #Selection 1, encrypt a message
     if selection == 1:
         print("Playfair Encryption Tool (P.E.T)")
         print("Written By: James Miller")
@@ -236,6 +234,7 @@ while selection != 3:
     #message = countCheck(message)
     #playFair = generateSquare(key)
 
+    #Selection 2 decryptes an encrypted message
     elif selection == 2:
         print("Playfair Encryption Tool (P.E.T)")
         print("Written By: James Miller")
@@ -261,6 +260,7 @@ while selection != 3:
         print("Your encrypted message is: \n")
         print(decryptMessage)
 
+    #Selection 3 closes out the program and clears the screen
     if selection == 3:
         os.system('cls' if os.name == 'nt' else 'clear')
         exit()
@@ -268,10 +268,8 @@ while selection != 3:
 
     #print(key)
     #print(message)
-    print("")
     #for list in playFair:
         #print(list)
     #transPlayFair = transpose(playFair)
-    print("")
     #for list in transposed:
         #print(list)
