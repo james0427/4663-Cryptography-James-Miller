@@ -1,3 +1,11 @@
+###############################################
+# Name: James Miller
+# Class: CMPS 4663 Cryptography
+# Date: 14 July 2015
+# Program 1 - Playfair Cipher
+###############################################
+
+
 import pprint
 import re
 import os
@@ -183,13 +191,13 @@ def colRetr(playFair,message):
 
 ###########################################################################
 #Initial option 
-print("###############################################")
-print("# Name: James Miller")
-print("# Class: CMPS 4663 Cryptography")
-print("# Date: 14 July 2015")
-print("# Program 1 - Playfair Cipher")
-print("###############################################")
-print(" ")
+#print("###############################################")
+#print("# Name: James Miller")
+#print("# Class: CMPS 4663 Cryptography")
+#print("# Date: 14 July 2015")
+#print("# Program 1 - Playfair Cipher")
+#print("###############################################")
+#print(" ")
 
 selection = 0
 
