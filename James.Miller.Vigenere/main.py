@@ -12,11 +12,11 @@ import randomized_vigenere as rv
 def main():
     parser = argparse.ArgumentParser()
 
-        '''
-        @Input example from my console:
-        "python main.py -m decrypt -s 01020304 -i encryptedText.txt -o decryptedText.txt"
-        "python main.py -m decrypt -s 01020304 -i encryptedText.txt -o decryptedText.txt"
-        '''
+#'''
+#@Input example from my console:
+#"python main.py -m decrypt -s 01020304 -i encryptedText.txt -o decryptedText.txt"
+#"python main.py -m decrypt -s 01020304 -i encryptedText.txt -o decryptedText.txt"
+#'''
 
     parser.add_argument("-m", "--mode", dest="mode", default = "encrypt", help="Encrypt or Decrypt")
     parser.add_argument("-i", "--inputfile", dest="inputFile", help="Input Name")

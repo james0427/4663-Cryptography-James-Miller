@@ -16,13 +16,13 @@ encryptKey =[]
 DecryptKey =[]
 
 
-"""
-Takes the inputed seed and then divides the individual characters out,
-allowing for us to use the seed as the keyword.
-
-@param   Seed Passed in fron encrpt or decrypt
-@returns The keyword, by taking the last two numbers and converting them to ascii
-"""
+#"""
+#Takes the inputed seed and then divides the individual characters out,
+#allowing for us to use the seed as the keyword.
+#
+#@param   Seed Passed in fron encrpt or decrypt
+#@returns The keyword, by taking the last two numbers and converting them to ascii
+#"""
 def keywordFromSeed(seed):
     Letters = []
     while seed > 0:
@@ -30,14 +30,14 @@ def keywordFromSeed(seed):
         seed = seed // 100
     return ''.join(Letters)
 
-"""
-Called the function to create the key from the seed along with builds the
-Vigenere table. After which searches for the intersect of the plaintext
-and the keyword to provide the encrpyted value.
-
-@param   Initial Plain text message, The keyword, and the seed
-@returns The encrypted message (returns to file)
-"""
+#"""
+#Called the function to create the key from the seed along with builds the
+#Vigenere table. After which searches for the intersect of the plaintext
+#and the keyword to provide the encrpyted value.
+#
+#@param   Initial Plain text message, The keyword, and the seed
+#@returns The encrypted message (returns to file)
+#"""
 def encrypt(plain_text_message,keyword,seed):
   keyWord = keywordFromSeed(seed)
   Vigenere = buildVigenere(SYMBOLS,seed)
@@ -49,15 +49,15 @@ def encrypt(plain_text_message,keyword,seed):
   Encrypt = ''.join(encryptKey)
   return Encrypt
 
-"""
-Called the function to create the key from the seed along with builds the
-Vigenere table. After which searches for the keyword value first and then
-compares that value with the encrypted message to locate the original
-plain text.
-
-@param   Encrpyted message, The keyword, and the seed
-@returns The Decrypted message (Returns to file)
-"""
+#"""
+#Called the function to create the key from the seed along with builds the
+#Vigenere table. After which searches for the keyword value first and then
+#compares that value with the encrypted message to locate the original
+#plain text.
+#
+#@param   Encrpyted message, The keyword, and the seed
+#@returns The Decrypted message (Returns to file)
+#"""
 def decrypt(Encrpyted_message,keyword,seed):
   keyWord = keywordFromSeed(seed)
   Vigenere = buildVigenere(SYMBOLS,seed)
@@ -70,15 +70,15 @@ def decrypt(Encrpyted_message,keyword,seed):
   Decrypt = ''.join(DecryptKey)
   return Decrypt
 
-"""
-These next three function allow for easy searching of the characters,
-which are being passed in. These three function then return either the
-X or Y value which is used to decrypt and encrypt messages
-
-@param   Vigenere matrix, The size of Symbols (In this case 95), and the
-          character that is being looked for.
-@returns X or Y position coords
-"""
+#"""
+#These next three function allow for easy searching of the characters,
+#which are being passed in. These three function then return either the
+#X or Y value which is used to decrypt and encrypt messages
+#
+#@param   Vigenere matrix, The size of Symbols (In this case 95), and the
+#          character that is being looked for.
+#@returns X or Y position coords
+#"""
 def getValues(matrix,length,text):
   Vi = 0
   for i in range(length):
@@ -98,13 +98,13 @@ def getXValues(matrix,length,text,Vj):
     if matrix[Vj][i] == text:
       Vj = i
       return Vj
-"""
-Builds the Vigenere table, while checking to make sure that every character is
-unique so there are no duplicate characters in a row or column,
-
-@param   Symbols, and the seed
-@returns The Vigenere matrix
-"""
+#"""
+#Builds the Vigenere table, while checking to make sure that every character is
+#unique so there are no duplicate characters in a row or column,
+#
+#@param   Symbols, and the seed
+#@returns The Vigenere matrix
+#"""
 def buildVigenere(symbols,seed):
     random.seed(seed)
     vigenere = [[0 for i in range(size)] for i in range(size)]
