@@ -17,7 +17,6 @@ def generateAlphabet():
     #Generate the alphabet
     for i in range(0,26):
         alphabet = alphabet + chr(i+65)
-        
     return alphabet
 
 
